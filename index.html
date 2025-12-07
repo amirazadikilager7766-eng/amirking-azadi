@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yalda Business Battle 2077</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+      /* Custom Grunge Font */
+      @font-face {
+        font-family: 'Gramophone';
+        src: url('https://hosseinsohrabi.me/webinar/GramophoneFaNum-Grunge.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      body {
+        font-family: 'Vazirmatn', sans-serif;
+        background-color: #020617;
+        color: #f8fafc;
+        overflow-x: hidden;
+      }
+      
+      h1, h2, h3, .font-grunge {
+        font-family: 'Gramophone', 'Vazirmatn', sans-serif;
+      }
+      
+      /* Cosmic Animations */
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.3; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle infinite ease-in-out;
+      }
+      
+      /* Floating objects */
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+
+      /* Mask Image Gradient for Profile */
+      .mask-image-gradient {
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      }
+
+      /* Pulse Glow */
+      .animate-pulse-glow {
+        animation: pulseGlow 2s infinite;
+      }
+      @keyframes pulseGlow {
+        0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+      }
+      
+      /* Combat: Shake Effect */
+      .shake {
+        animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+      }
+      @keyframes shake {
+        10%, 90% { transform: translate3d(-1px, 0, 0); }
+        20%, 80% { transform: translate3d(2px, 0, 0); }
+        30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+        40%, 60% { transform: translate3d(4px, 0, 0); }
+      }
+
+      /* Combat: Damage Float */
+      @keyframes floatUp {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
+      }
+      .damage-text {
+        position: absolute;
+        color: #ef4444;
+        font-weight: bold;
+        font-size: 2rem;
+        animation: floatUp 1s ease-out forwards;
+        pointer-events: none;
+      }
+
+      /* Combat: Low Health Pulse */
+      .pulse-red {
+        animation: pulseRed 1s infinite;
+      }
+      @keyframes pulseRed {
+        0% { box-shadow: inset 0 0 0 0 rgba(220, 38, 38, 0); }
+        50% { box-shadow: inset 0 0 20px 10px rgba(220, 38, 38, 0.5); }
+        100% { box-shadow: inset 0 0 0 0 rgba(220, 38, 38, 0); }
+      }
+
+      /* Combo Fire Effect */
+      .combo-fire {
+        text-shadow: 0 0 10px #facc15, 0 0 20px #ef4444;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #b91c1c;
+        border-radius: 3px;
+      }
+
+      /* Clip Path for Wheel Marker */
+      .clip-triangle {
+        clip-path: polygon(100% 0, 0 0, 50% 100%);
+      }
+
+      /* Victory Modal Animations */
+      @keyframes modalZoom {
+        0% { transform: scale(0.5); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      .animate-modalZoom {
+        animation: modalZoom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.3s ease-out forwards;
+      }
+
+      /* --- ATMOSPHERIC EFFECTS --- */
+
+      /* 1. Sandstorm (Level 1) */
+      .sandstorm {
+        position: fixed;
+        top: 0; left: 0; width: 200%; height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+        opacity: 0.4;
+        animation: sandMove 10s linear infinite;
+        pointer-events: none;
+        z-index: 5;
+        mix-blend-mode: overlay;
+      }
+      @keyframes sandMove {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      /* 2. Embers (Level 2) */
+      .ember {
+        position: absolute;
+        width: 4px; height: 4px;
+        background: #f59e0b;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #ef4444;
+        animation: rise 4s infinite linear;
+        opacity: 0;
+      }
+      @keyframes rise {
+        0% { transform: translateY(100vh) scale(0); opacity: 0; }
+        20% { opacity: 1; }
+        100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+      }
+
+      /* 3. Snow (Level 3 / Yalda) */
+      .snow {
+        position: absolute;
+        width: 6px; height: 6px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: snowfall 10s linear infinite;
+      }
+      @keyframes snowfall {
+        0% { transform: translateY(-10px) translateX(0); opacity: 0; }
+        10% { opacity: 0.8; }
+        100% { transform: translateY(100vh) translateX(20px); opacity: 0; }
+      }
+      
+      /* --- PARALLAX BACKGROUND LAYERS --- */
+      .parallax-layer {
+          position: fixed;
+          top: -10%; left: -10%;
+          width: 120%; height: 120%;
+          transition: transform 0.1s ease-out;
+          will-change: transform;
+          pointer-events: none;
+          z-index: 0;
+      }
+
+      /* --- AUDIO VISUALIZER BARS --- */
+      .visualizer-container {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 4px;
+        height: 60px;
+        width: 100%;
+      }
+      .visualizer-bar {
+        width: 8px;
+        background: linear-gradient(to top, #ef4444, #facc15);
+        border-radius: 4px;
+        transition: height 0.1s ease;
+        box-shadow: 0 0 10px rgba(220,38,38,0.5);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "canvas-confetti": "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/+esm",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "vite": "https://aistudiocdn.com/vite@^7.2.6"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
